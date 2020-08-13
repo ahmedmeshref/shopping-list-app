@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="859dc8d3-63af-4219-9b6e-11f1d6dd4fc8" name="Default Changelist" comment="" />
+    <list default="true" id="859dc8d3-63af-4219-9b6e-11f1d6dd4fc8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/views/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -11,8 +16,13 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="HTML File" />
+        <option value="CSS File" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1g0LrCoXlnlsVXI0E6PEt9NvR1E" />
   <component name="ProjectViewState">
@@ -20,11 +30,13 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="12.16.3" />
     <property name="javascript.nodejs.core.library.typings.version" value="12.12.54" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../FrontendUdacity/nodes/weather-journal-app/server.js" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -33,6 +45,14 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="watcher.settings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\coding\web\node\shopping_list_app" />
+      <recent name="D:\coding\web\node\shopping_list_app\public" />
+      <recent name="D:\coding\web\node\shopping_list_app\puplic" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -42,17 +62,41 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1597246759401</updated>
-      <workItem from="1597246760548" duration="1125000" />
+      <workItem from="1597246760548" duration="4006000" />
+      <workItem from="1597332030200" duration="510000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="WindowStateProjectService">
+    <state x="359" y="227" key="EditFileWatcherDialog" timestamp="1597250604295">
+      <screen x="0" y="0" width="1500" height="1000" />
+    </state>
+    <state x="359" y="227" key="EditFileWatcherDialog/0.0.1500.1000@0.0.1500.1000" timestamp="1597250604295" />
     <state x="478" y="196" key="FileChooserDialogImpl" timestamp="1597247132348">
       <screen x="0" y="0" width="1500" height="1000" />
     </state>
     <state x="478" y="196" key="FileChooserDialogImpl/0.0.1500.1000@0.0.1500.1000" timestamp="1597247132348" />
+    <state x="143" y="59" key="SettingsEditor" timestamp="1597250597660">
+      <screen x="0" y="0" width="1500" height="1000" />
+    </state>
+    <state x="143" y="59" key="SettingsEditor/0.0.1500.1000@0.0.1500.1000" timestamp="1597250597660" />
+    <state x="325" y="228" width="840" height="1034" key="run.anything.popup" timestamp="1597251547363">
+      <screen x="0" y="0" width="1500" height="1000" />
+    </state>
+    <state x="325" y="228" width="840" height="1034" key="run.anything.popup/0.0.1500.1000@0.0.1500.1000" timestamp="1597251547363" />
   </component>
 </project>
