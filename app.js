@@ -3,9 +3,9 @@ let engines = require('consolidate');
 const app = express();
 
 // configure static files
-app.use(express.static('views'));
-app.use(express.static('public'));
-
+app.use(express.static('./views'));
+app.use(express.static('./public'));
+app.set('view engine', 'ejs');
 
 
 
@@ -13,13 +13,12 @@ app.use(express.static('public'));
 Routes
  */
 app.get('/', (req, res) => {
-    res.render('index.html');
-})
+    res.render(__dirname + 'index.ejs');
+});
 
-app.get('/shopping_list', (req, res) => {
-    res.render('list.html');
-})
-
+app.get('/list', (req, res) => {
+    res.render('shop_list.ejs');
+});
 
 
 const port = 3000;
