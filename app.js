@@ -13,7 +13,7 @@ app.set('view engine', 'ejs');
 Routes
  */
 app.get('/', (req, res) => {
-    res.render(__dirname + 'index.ejs');
+    res.render('index.ejs');
 });
 
 app.get('/list', (req, res) => {

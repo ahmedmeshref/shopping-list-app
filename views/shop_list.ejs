@@ -7,6 +7,7 @@
 </head>
 <body>
 <header>
+    <a class="header-logo">HOME</a>
     <a class="header-logo">LIST</a>
 </header>
 <div class="container">
@@ -19,18 +20,17 @@
             <span>Item</span>
         </div>
         <ul class="table-body">
-            <li>
-                <span class="id-column">1</span>
-                <span class="name-column">potatoes</span>
-            </li>
-            <li>
-                <span class="id-column">2</span>
-                <span class="name-column">carrots</span>
-            </li>
-            <li>
-                <span class="id-column">3</span>
-                <span class="name-column">onions</span>
-            </li>
+            <% const items = [
+                {id: 1, name: "potate"},
+                {id: 2, name: "rice"},
+                {id: 3, name: "pasta"}
+            ]%>
+            <% for (const item of items) { %>
+                <li>
+                    <span class="id-column"><%= item.id %></span>
+                    <span class="name-column"><%= item.name %></span>
+                </li>
+            <% } %>
         </ul>
     </div>
 </div>
