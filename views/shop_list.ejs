@@ -7,12 +7,13 @@
 </head>
 <body>
 <header>
-    <a class="header-logo">HOME</a>
-    <a class="header-logo">LIST</a>
+    <a class="header-logo" href="/">HOME</a>
+    <a class="header-logo" href="/list">LIST</a>
 </header>
 <div class="container">
     <div class="container-header">
         <h1>Shopping List</h1>
+        <button id="add-item-btn">+ Add item</button>
     </div>
     <div class="index-table-wrapper">
         <div class="table-head">
@@ -21,9 +22,9 @@
         </div>
         <ul class="table-body">
             <% const items = [
-                {id: 1, name: "potate"},
-                {id: 2, name: "rice"},
-                {id: 3, name: "pasta"}
+                {id: 1, name: 'potatoes'},
+                {id: 2, name: 'carrots'},
+                {id: 3, name: 'onions'}
             ]%>
             <% for (const item of items) { %>
                 <li>

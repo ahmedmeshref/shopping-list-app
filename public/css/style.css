@@ -191,3 +191,26 @@ header {
     font-weight: 500;
     color: #8491a5;
 }
+
+#add-item-btn {
+    background: #80bcff;
+    color: #fff;
+    border-radius: 30px;
+    border: 2px #80bcff solid;
+    cursor: pointer;
+    font-size: 14px;
+    width: 120px;
+    height: 45px;
+    line-height: 43px;
+    text-align: center;
+}
+
+#add-item-btn:focus {
+    outline: none;
+}
+
+#add-item-btn:hover {
+    color: #80bcff;
+    background: #fff;
+    transition: all 0.3s ease;
+}
