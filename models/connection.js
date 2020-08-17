@@ -9,9 +9,9 @@ mongoose.connect(connectionURI, {
 
 // create connection
 let db = mongoose.connection
-    .on('error', console.error.bind(console, 'connection error:'))
+    .on('error', console.error.bind(console, 'Connection error'))
     .once('open', () => {
-        console.log("connected to database")
+        console.log('db connection open');
     });
 
 module.exports = {

@@ -1,5 +1,5 @@
 const express = require('express');
-const {db} = require('./db/connection');
+const {db} = require('./models/connection');
 
 // Create app
 const app = express();
@@ -7,8 +7,9 @@ const app = express();
 
 // Configure static files
 app.use(express.static('./views'));
-app.use(express.static('./public'));
+app.use(express.static('./client/public'));
 app.set('view engine', 'ejs');
+
 // configure middleware
 app.use(express.urlencoded()); //Parse URL-encoded bodies
 app.use(express.json()); //Used to parse JSON bodies

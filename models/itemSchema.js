@@ -8,4 +8,6 @@ const itemsSchema = new Mongoose.Schema({
 })
 
 // set up the mode
-Mongoose.model("items", itemsSchema)
+module.exports= {
+    Item: Mongoose.model("items", itemsSchema)
+}
