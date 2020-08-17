@@ -1,30 +1,16 @@
 const express = require('express');
-const {db} = require('./models/connection');
 
 // Create app
 const app = express();
 
-
-// Configure static files
-app.use(express.static('./views'));
-app.use(express.static('./client/public'));
-app.set('view engine', 'ejs');
-
-// configure middleware
+/*
+configure middleware
+ */
 app.use(express.urlencoded()); //Parse URL-encoded bodies
 app.use(express.json()); //Used to parse JSON bodies
+// routes
+app.use('/', require('./router'));
 
-
-/*
-Routes
- */
-app.get('/', (req, res) => {
-    res.render('index.ejs');
-});
-
-app.get('/list', (req, res) => {
-    res.render('shop_list.ejs');
-});
 
 
 const port = 3000;

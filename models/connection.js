@@ -15,7 +15,7 @@ let db = mongoose.connection
     });
 
 module.exports = {
-    db: db
+    db: db,
 };
 
 
