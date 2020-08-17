@@ -13,8 +13,10 @@ router.get('/', (req, res) => {
     res.render('index.ejs');
 });
 
-router.get('/list', (req, res) => {
-    res.render('shop_list.ejs');
+router.get('/list', async (req, res) => {
+    const items = await Item.find();
+    res.render('shop_list.ejs', {items: items});
 });
 
-module.exports = router
+
+module.exports = router;
