@@ -3,6 +3,17 @@
     box-sizing: border-box;
 }
 
+@media (min-width: 801px) {
+    .top-wrapper {
+        display: block;
+    }
+
+    .top-detail {
+        padding-bottom: 30px;
+    }
+}
+
+
 html {
     font-size: 100%;
     font-family: 'Hiragino Sans', sans-serif;
@@ -49,6 +60,7 @@ h1 {
     max-width: 1200px;
     min-width: 920px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
@@ -95,7 +107,7 @@ h1 {
 
 .top-detail .index-button:hover {
     color: #ffffff;
-    background-color:  #58d2b2;
+    background-color: #58d2b2;
 }
 
 
@@ -104,14 +116,16 @@ h1 {
 }
 
 .top-image {
-    width: 64%;
+    width: 60%;
     text-align: center;
     overflow: hidden;
 }
 
 .top-image img {
     width: 88%;
+    border-radius: 20px;
 }
+
 
 /* header ================================ */
 header {

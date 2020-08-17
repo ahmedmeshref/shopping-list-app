@@ -1,12 +1,17 @@
 const express = require('express');
-let engines = require('consolidate');
+const {db} = require('./db/connection');
+
+// Create app
 const app = express();
 
-// configure static files
+
+// Configure static files
 app.use(express.static('./views'));
 app.use(express.static('./public'));
 app.set('view engine', 'ejs');
-
+// configure middleware
+app.use(express.urlencoded()); //Parse URL-encoded bodies
+app.use(express.json()); //Used to parse JSON bodies
 
 
 /*
