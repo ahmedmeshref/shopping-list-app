@@ -26,10 +26,10 @@
             <span>Item</span>
         </div>
         <ul class="table-body">
-            <% for (const item of items) { %>
+            <% for (let i = 1; i <= items.length; i++) { %>
                 <li>
-                    <span class="id-column"><%= item.id %></span>
-                    <span class="name-column"><%= item.name %></span>
+                    <span class="id-column"><%= i %></span>
+                    <span class="name-column"><%= items[i-1].name %></span>
                 </li>
             <% } %>
         </ul>

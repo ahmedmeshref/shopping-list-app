@@ -1,6 +1,7 @@
 const app = {
     add_item_form: document.getElementById("add-item-form"),
-    item_name: document.getElementById("item-name")
+    item_name: document.getElementById("item-name"),
+    items_wrapper: document.querySelector(".table-body")
 }
 
 let print = (msg) => {
@@ -20,22 +21,30 @@ let postData = async (url, data) => {
     return response.json();
 }
 
+let buildItem = (tag, content, className) => {
+    let new_item = document.createElement(tag);
+    new_item.innerHTML = content;
+    new_item.classList.add(className);
+    return new_item;
+}
+
+let addItemToScreen = (name) => {
+    console.log(app.lastElementChild.firstElementChild.innerHTML);
+    console.log(id);
+}
+
 let addNewItem = (e) => {
     e.preventDefault();
     const name = app.item_name.value;
-    if (name){
-        postData('/list', {
-            name: name
+    postData('/list', {
+        name: name
+    })
+        .then((resObj) => {
+            addItemToScreen(resObj.name);
         })
-            .then((resObj) => {
-                print(resObj)
-            })
-            .catch((err) => {
-                print(err)
-            })
-    } else {
-        print("name is not giving");
-    }
+        .catch((err) => {
+            print(err);
+        })
 }
 
 app.add_item_form.addEventListener('submit', addNewItem)
