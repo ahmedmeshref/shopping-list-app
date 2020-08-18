@@ -232,6 +232,14 @@ header {
     transition: all 0.3s ease;
 }
 
-#add-item {
+#add-item, #close-model {
     float: right;
+    margin-left: 4px;
+}
+
+
+.modal-header {
+    -webkit-box-shadow: 0 8px 6px -6px #A9A9A9;
+    -moz-box-shadow: 0 8px 6px -6px #A9A9A9;
+    box-shadow: 0 8px 6px -6px #A9A9A9;
 }
