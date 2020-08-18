@@ -18,5 +18,11 @@ router.get('/list', async (req, res) => {
     res.render('shop_list.ejs', {items: items});
 });
 
+router.post('/list', async (req, res) => {
+    const items = await Item.find();
+    res.render('shop_list.ejs', {items: items});
+});
+
+
 
 module.exports = router;
