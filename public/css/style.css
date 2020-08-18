@@ -34,8 +34,8 @@ ul, li {
 }
 
 a {
-    display: block;
     text-decoration: none;
+    display: block;
     color: #2d3133;
     font-size: 14px;
     cursor: pointer;
@@ -132,11 +132,14 @@ header {
     height: 56px;
     background-color: #ffffff;
     border-bottom: 1px solid #f0f4f9;
+    -webkit-box-shadow: 0 8px 6px -6px #A9A9A9;
+    -moz-box-shadow: 0 8px 6px -6px #A9A9A9;
+    box-shadow: 0 8px 6px -6px #A9A9A9;
 }
 
 .header-logo {
     margin-left: 70px;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 20px;
     line-height: 56px;
     color: #6c7686;
@@ -149,11 +152,10 @@ header {
 
 /* container ================================ */
 .container {
-    width: 80%;
+    width: 75%;
     min-width: 360px;
     max-width: 720px;
-    margin: 0 auto;
-    margin-top: 56px;
+    margin: 56px auto 0;
 }
 
 .container-header {
@@ -206,7 +208,7 @@ header {
     color: #8491a5;
 }
 
-#add-item-btn {
+#new-item {
     background: #80bcff;
     color: #fff;
     border-radius: 30px;
@@ -217,14 +219,19 @@ header {
     height: 45px;
     line-height: 43px;
     text-align: center;
+    font-weight: bold;
 }
 
-#add-item-btn:focus {
+#new-item:focus {
     outline: none;
 }
 
-#add-item-btn:hover {
+#new-item:hover {
     color: #80bcff;
     background: #fff;
     transition: all 0.3s ease;
+}
+
+#add-item {
+    float: right;
 }
