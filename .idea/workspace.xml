@@ -22,7 +22,7 @@
     <list default="true" id="859dc8d3-63af-4219-9b6e-11f1d6dd4fc8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/add_item.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/add_item.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/shop_list.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/shop_list.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/router.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +88,7 @@
       <workItem from="1597581709574" duration="6678000" />
       <workItem from="1597669101551" duration="3756000" />
       <workItem from="1597673959933" duration="4142000" />
-      <workItem from="1597758227772" duration="6906000" />
+      <workItem from="1597758227772" duration="8379000" />
     </task>
     <servers />
   </component>

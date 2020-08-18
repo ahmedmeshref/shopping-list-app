@@ -24,7 +24,7 @@ router.post('/list', async (req, res) => {
         // add try catch to handle server errors
         try {
             const new_item = new Item({
-                name: name
+                name: name[0].toUpperCase() + name.slice(1)
             })
             await new_item.save();
             res.json(new_item);

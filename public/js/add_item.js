@@ -29,8 +29,14 @@ let buildItem = (tag, content, className) => {
 }
 
 let addItemToScreen = (name) => {
-    console.log(app.lastElementChild.firstElementChild.innerHTML);
-    console.log(id);
+    // give id to the new added item
+    const id = +app.items_wrapper.lastElementChild.firstElementChild.innerHTML + 1 || 0;
+    const li_content = `
+    <span class="id-column">${id}</span>
+    <span class="name-column">${name}</span>
+    `
+    const li = buildItem('LI', li_content);
+    app.items_wrapper.appendChild(li);
 }
 
 let addNewItem = (e) => {
