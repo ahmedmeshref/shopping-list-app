@@ -19,8 +19,18 @@ router.get('/list', async (req, res) => {
 });
 
 router.post('/list', async (req, res) => {
-    const items = await Item.find();
-    res.render('shop_list.ejs', {items: items});
+    const name = req.body.name;
+    if (name) {
+        const new_item = new Item({
+            name: name
+        })
+        await new_item.save();
+        res.json(new_item);
+    } else{
+        res.status(400).json({
+            message : 'Bad Request'
+        })
+    }
 });
 
 
