@@ -21,11 +21,18 @@ router.get('/list', async (req, res) => {
 router.post('/list', async (req, res) => {
     const name = req.body.name;
     if (name) {
-        const new_item = new Item({
-            name: name
-        })
-        await new_item.save();
-        res.json(new_item);
+        // add try catch to handle server errors
+        try {
+            const new_item = new Item({
+                name: name
+            })
+            await new_item.save();
+            res.json(new_item);
+        } catch (err){
+            res.status(500).json({
+                message : err
+            })
+        }
     } else{
         res.status(400).json({
             message : 'Bad Request'
