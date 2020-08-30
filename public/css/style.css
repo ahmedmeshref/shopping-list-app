@@ -243,3 +243,15 @@ header {
     -moz-box-shadow: 0 8px 6px -6px #A9A9A9;
     box-shadow: 0 8px 6px -6px #A9A9A9;
 }
+
+#item-name:invalid {
+    border-color: #B00020;
+}
+
+.hidden {
+    display: none;
+}
+
+small#item-name-error {
+    color: #B00020;
+}

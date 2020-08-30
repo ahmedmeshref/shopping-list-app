@@ -1,6 +1,6 @@
 const express = require('express');
 
-// Create app
+// create app
 const app = express();
 
 /*
@@ -9,6 +9,7 @@ configure middleware
 app.use(express.urlencoded()); //Parse URL-encoded bodies
 app.use(express.json()); //Used to parse JSON bodies
 // routes
+app.use('/api', require('./api_router'));
 app.use('/', require('./router'));
 
 

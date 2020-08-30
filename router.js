@@ -1,10 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const db = require('./models/connection');
-const Item = require("./models/itemSchema")
+const db = require("./models/connection")
+const Item = require("./models/itemSchema");
 
 
-// Configure static files
+/*
+configure middleware
+ */
 router.use(express.static('./views'));
 router.use(express.static('./public'));
 // router.set('view engine', 'ejs');

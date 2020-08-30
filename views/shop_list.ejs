@@ -29,7 +29,7 @@
             <% for (let i = 1; i <= items.length; i++) { %>
                 <li>
                     <span class="id-column"><%= i %></span>
-                    <span class="name-column"><%= items[i-1].name %></span>
+                    <span class="name-column"><%= items[i - 1].name %></span>
                 </li>
             <% } %>
         </ul>
@@ -50,7 +50,9 @@
                 <form id="add-item-form">
                     <div class="form-group">
                         <label for="item-name">Name</label>
-                        <input type="text" class="form-control" id="item-name" placeholder="Enter item's name ..." required>
+                        <input type="text" class="form-control" id="item-name" placeholder="Enter item's name ..."
+                               required>
+                        <small id="item-name-error" class="hidden">Item already exists.</small>
                     </div>
                     <button type="submit" class="btn btn-primary" id="add-item">Add</button>
                     <button type="button" id="close-model" class="btn btn-secondary" data-dismiss="modal">Close</button>
