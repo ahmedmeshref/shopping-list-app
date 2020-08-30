@@ -246,6 +246,7 @@ header {
 
 #item-name:invalid {
     border-color: #B00020;
+    box-shadow: 3px 3px 10px -6px #B00020;
 }
 
 .hidden {
