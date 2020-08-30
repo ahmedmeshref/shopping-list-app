@@ -4,7 +4,7 @@ const app = {
     item_name: document.getElementById("item-name"),
     items_wrapper: document.querySelector(".table-body"),
     close_model: document.getElementById("close-model"),
-    name_exist_error: document.getElementById("item-name-error");
+    name_exist_error: document.getElementById("item-name-error"),
     existing_items: []
 }
 
@@ -68,12 +68,16 @@ let getSanitizedName = () => {
     return sanitize(app.item_name.value)
 }
 
-let makeInputInvalid = (inputField) => {
-    inputField.setCustomValidity("invalid");
+let changeInputValidity = (inputField, validity) => {
+    inputField.setCustomValidity(validity);
 }
 
-let showText = (textEle) => {
+let showElement = (textEle) => {
     textEle.classList.remove('hidden');
+}
+
+let hideElement = (textEle) => {
+    textEle.classList.add('hidden');
 }
 
 // ------------------------------------------------------------------------------------------------------------------
@@ -112,13 +116,12 @@ app.add_item_form.addEventListener('submit', addNewItem);
 // ------------------------------------------------------------------------------------------------------------------
 // Get db existing items
 // ------------------------------------------------------------------------------------------------------------------
-let verified = true;
 
 let getAllItems = () => {
     getData('/api/items')
         .then((itemsObj) => {
             app.existing_items = itemsObj.items;
-            console.log("All items fetched from db");
+            console.log("Items fetched from db");
         })
         .catch((err) => {
             console.log(err);
@@ -132,14 +135,20 @@ app.add_item_btn.addEventListener('click', getAllItems);
 // ------------------------------------------------------------------------------------------------------------------
 let verifyName = () => {
     const newItemName = getSanitizedName();
-    if (newItemName){
-        const formattedName = newItemName[0].toUpperCase() + newItemName.slice(1).toLowerCase();
-        app.existing_items.forEach((item) => {
-            if (item.name === formattedName) {
-                makeInputInvalid(app.item_name);
-                showText(app.name_exist_error);
-            }
-        })
+    if (!newItemName) return
+    // format the new item name to match the format of the elements in db.
+    const formattedName = newItemName[0].toUpperCase() + newItemName.slice(1).toLowerCase();
+    // compare the name to existing items
+    app.existing_items.forEach((item) => {
+        if (item.name === formattedName) {
+            changeInputValidity(app.item_name, "invalid");
+            // show error message, item already exists.
+            showElement(app.name_exist_error);
+        }
+    })
+    if (app.item_name.checkValidity()){
+        changeInputValidity(app.item_name, "valid");
+        hideElement(app.name_exist_error);
     }
 }
 
