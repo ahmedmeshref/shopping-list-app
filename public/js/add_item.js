@@ -68,7 +68,7 @@ let formatName = (name) => {
     return name[0].toUpperCase() + name.slice(1).toLowerCase();
 }
 
-let changeInputValidity = (inputField, validity) => {
+let setInputValidity = (inputField, validity) => {
     inputField.setCustomValidity(validity);
 }
 
@@ -103,19 +103,21 @@ app.add_item_btn.addEventListener('click', getItems);
 let verifyName = () => {
     const newItemName = sanitize(app.item_name.value);
     if (!newItemName) return;
+    let nameValid = true;
     // format the new item name to match the format of the elements in db.
     const formattedName = formatName(newItemName);
     // compare new item's name to existing items in db.
     app.existing_items.forEach((item) => {
         if (item.name === formattedName) {
-            changeInputValidity(app.item_name, "invalid");
+            setInputValidity(app.item_name, "invalid");
             // show error message, item already exists.
             showElement(app.name_exist_error);
+            nameValid = false;
         }
     })
-    if (app.item_name.checkValidity()){
+    if (nameValid){
         // make field valid, if new item's name doesn't exist in db.
-        changeInputValidity(app.item_name, "valid");
+        setInputValidity(app.item_name, "");
         hideElement(app.name_exist_error);
     }
 }
@@ -153,10 +155,10 @@ let addNewItem = (e) => {
         })
 }
 
-if (app.item_name.checkValidity()){
-    // submit form if and only if, new item's name is verified.
-    app.add_item_form.addEventListener('submit', addNewItem);
-}
+// if (app.item_name.checkValidity()){
+//     // submit form if and only if, new item's name is verified.
+//     app.add_item_form.addEventListener('submit', addNewItem);
+// }
 
 
 
