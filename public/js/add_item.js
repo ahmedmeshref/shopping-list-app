@@ -100,23 +100,27 @@ app.add_item_btn.addEventListener('click', getItems);
 // ------------------------------------------------------------------------------------------------------------------
 // Live verification of new item's name
 // ------------------------------------------------------------------------------------------------------------------
+let isUnique = (collection, newItem) => {
+    for (const item of collection) {
+        if (item.name === newItem) {
+            setInputValidity(app.item_name, "invalid");
+            // show error message, item already exists.
+            showElement(app.name_exist_error);
+            return false;
+        }
+    }
+    return true;
+}
+
 let verifyName = () => {
     const newItemName = sanitize(app.item_name.value);
     if (!newItemName) return;
     let nameValid = true;
     // format the new item name to match the format of the elements in db.
-    const formattedName = formatName(newItemName);
-    // compare new item's name to existing items in db.
-    app.existing_items.forEach((item) => {
-        if (item.name === formattedName) {
-            setInputValidity(app.item_name, "invalid");
-            // show error message, item already exists.
-            showElement(app.name_exist_error);
-            nameValid = false;
-        }
-    })
-    if (nameValid){
-        // make field valid, if new item's name doesn't exist in db.
+    const formattedItemName = formatName(newItemName);
+    // check if new item's name is unique compared to existing items.
+    if (isUnique(app.existing_items, formattedItemName)){
+        // if new item's name is unique, make the input field valid.
         setInputValidity(app.item_name, "");
         hideElement(app.name_exist_error);
     }
@@ -143,6 +147,9 @@ let addItemToScreen = (name) => {
 
 let addNewItem = (e) => {
     e.preventDefault();
+    if (!app.item_name.checkValidity()) {
+        return
+    }
     const newItemName = sanitize(app.item_name.value);
     postData('/list', {
         name: newItemName
@@ -155,10 +162,9 @@ let addNewItem = (e) => {
         })
 }
 
-// if (app.item_name.checkValidity()){
-//     // submit form if and only if, new item's name is verified.
-//     app.add_item_form.addEventListener('submit', addNewItem);
-// }
+// submit form if and only if, new item's name is verified.
+app.add_item_form.addEventListener('submit', addNewItem);
+
 
 
 
