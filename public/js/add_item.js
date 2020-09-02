@@ -147,6 +147,7 @@ let addItemToScreen = (name) => {
 
 let addNewItem = (e) => {
     e.preventDefault();
+    // check that the new item's name is valid.
     if (!app.item_name.checkValidity()) {
         return
     }
