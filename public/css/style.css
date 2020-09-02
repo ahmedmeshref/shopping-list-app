@@ -211,18 +211,19 @@ header {
 }
 
 span.fa-check {
-    color: green;
+    /*color: ;*/
     width: 10%;
     line-height: 74px;
     text-align: center;
-    font-size: 1.5em;
+    font-size: 25px;
+    font-weight: 1000;
 }
 
 span.fa-check:hover {
     background-color: rgba(102, 204, 153, .2);
     cursor: pointer;
     transition: all 0.3s ease;
-    font-size: 27px;
+    font-size: 28px;
 }
 
 li:hover {

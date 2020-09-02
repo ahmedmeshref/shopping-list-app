@@ -2,6 +2,16 @@ const keys = {
     items_wrapper: document.getElementById("table-body")
 }
 
+
+let removeElementFromScreen = (element) => {
+    try {
+        keys.items_wrapper.removeChild(element);
+        console.log("Deleted Successfully!");
+    } catch {
+        alert("Error Happened!");
+    }
+}
+
 let deleteItem = (e) => {
     const target = e.target
     // verify the click target to be the check btn
@@ -21,9 +31,7 @@ let deleteItem = (e) => {
             throw Error(response.statusText);
         })
         .then((resVal) => {
-            console.log(resVal.item._id);
-            // TODO: Delete item from UI
-            // deleteItemFromUI(resVal.item._id)
+            removeElementFromScreen(e.target.parentNode);
         })
         .catch((err) => {
             // TODO: flash a message for 3 seconds and then delete it using setTimeout
