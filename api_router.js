@@ -3,6 +3,18 @@ const api = express.Router();
 const Item = require("./models/itemSchema");
 
 
+let send404 = (res) => {
+    res.status(400).json({
+        message: 'Bad Request'
+    })
+}
+
+let send500 = (res) => {
+    res.status(500).json({
+        message: err
+    })
+}
+
 api.get('/items', async (req, res) => {
     const items = await Item.find();
     res.json({
@@ -12,24 +24,21 @@ api.get('/items', async (req, res) => {
 
 api.post('/items', async (req, res) => {
     const name = req.body.name;
-    if (name) {
-        // add try catch to handle server errors
+    if (!name) send404(res);
+    const formattedName = name[0].toUpperCase() + req.body.name.slice(1).toLowerCase(),
+        nameExist = await Item.findOne({ name: formattedName }).exec();
+    if (nameExist === null){
         try {
             const new_item = new Item({
-                name: name[0].toUpperCase() + name.slice(1)
+                name: formattedName
             })
             await new_item.save();
             res.json(new_item);
         } catch (err) {
-            res.status(500).json({
-                message: err
-            })
+            send500(res);
         }
-    } else {
-        res.status(400).json({
-            message: 'Bad Request'
-        })
     }
+    send404(res);
 });
 
 

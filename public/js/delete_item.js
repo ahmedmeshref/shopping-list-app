@@ -13,7 +13,7 @@ let removeElementFromScreen = (element) => {
 }
 
 let deleteItem = (e) => {
-    const target = e.target
+    const target = e.target;
     // verify the click target to be the check btn
     if (!target.classList.contains("fa-check")) return;
     fetch("/api/items", {
@@ -27,7 +27,7 @@ let deleteItem = (e) => {
         })
     })
         .then((response) => {
-            if (response.ok) return response.json()
+            if (response.ok) return response.json();
             throw Error(response.statusText);
         })
         .then((resVal) => {
@@ -35,8 +35,8 @@ let deleteItem = (e) => {
         })
         .catch((err) => {
             // TODO: flash a message for 3 seconds and then delete it using setTimeout
-            alert(err)
+            alert(err);
         })
 }
 
-keys.items_wrapper.addEventListener("click", deleteItem)
+keys.items_wrapper.addEventListener("click", deleteItem);

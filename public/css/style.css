@@ -211,7 +211,7 @@ header {
 }
 
 span.fa-check {
-    /*color: ;*/
+    color: green;
     width: 10%;
     line-height: 74px;
     text-align: center;

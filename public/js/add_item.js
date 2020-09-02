@@ -29,19 +29,6 @@ let sanitize = (string) => {
     return string.replace(reg, (match) => (map[match]));
 }
 
-let postData = async (url, data) => {
-    let response = await fetch(url, {
-        method: 'POST',
-        credentials: 'same-origin', // include, *same-origin, omit
-        headers: {
-            'Content-Type': 'application/json'
-            // 'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: JSON.stringify(data)
-    })
-    return response.json();
-}
-
 let getData = async (url) => {
     let response = await fetch(url, {
         method: 'GET',
@@ -134,16 +121,14 @@ app.item_name.addEventListener('keyup', verifyName);
 // ------------------------------------------------------------------------------------------------------------------
 let addItemToScreen = (itemId, name) => {
     // give id to the new added item
-    const listId = +app.items_wrapper.lastElementChild.firstElementChild.innerHTML + 1 || 0;
+    const listId = +app.items_wrapper.childElementCount + 1;
     const li_content = `
     <span class="id-column">${listId}</span>
     <span class="name-column">${sanitize(name)}</span>
-    <span class="fa fa-check" data-id=${itemId}></span>
+    <span class="fa fa-check" data-id=${itemId}>&#10003;</span>
     `
     const li = buildItem('LI', li_content);
     app.items_wrapper.appendChild(li);
-    // close the modal
-    clickBtn(app.close_model);
 }
 
 let addNewItem = (e) => {
@@ -153,14 +138,29 @@ let addNewItem = (e) => {
         return
     }
     const newItemName = sanitize(app.item_name.value);
-    postData('/api/items', {
-        name: newItemName
+    fetch('/api/items', {
+        method: 'POST',
+        credentials: 'same-origin', // include, *same-origin, omit
+        headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: JSON.stringify({
+            name: newItemName
+        })
     })
+        .then((response) => {
+            if (response.ok) return response.json();
+            throw Error(response.statusText);
+        })
         .then((resObj) => {
+            // close the modal
+            clickBtn(app.close_model);
+            // add new item to items list
             addItemToScreen(resObj._id, resObj.name);
         })
         .catch((err) => {
-            print(err);
+            alert(err);
         })
 }
 
