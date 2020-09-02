@@ -22,6 +22,7 @@ let deleteItem = (e) => {
         })
         .then((resVal) => {
             console.log(resVal.item._id);
+            // TODO: Delete item from UI
             // deleteItemFromUI(resVal.item._id)
         })
         .catch((err) => {
