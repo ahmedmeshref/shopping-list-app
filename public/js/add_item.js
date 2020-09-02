@@ -153,7 +153,7 @@ let addNewItem = (e) => {
         return
     }
     const newItemName = sanitize(app.item_name.value);
-    postData('/list', {
+    postData('/api/items', {
         name: newItemName
     })
         .then((resObj) => {

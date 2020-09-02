@@ -20,27 +20,6 @@ router.get('/list', async (req, res) => {
     res.render('shop_list.ejs', {items: items});
 });
 
-router.post('/list', async (req, res) => {
-    const name = req.body.name;
-    if (name) {
-        // add try catch to handle server errors
-        try {
-            const new_item = new Item({
-                name: name[0].toUpperCase() + name.slice(1)
-            })
-            await new_item.save();
-            res.json(new_item);
-        } catch (err){
-            res.status(500).json({
-                message : err
-            })
-        }
-    } else{
-        res.status(400).json({
-            message : 'Bad Request'
-        })
-    }
-});
 
 
 
