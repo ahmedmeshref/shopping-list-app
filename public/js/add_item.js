@@ -132,12 +132,13 @@ app.item_name.addEventListener('keyup', verifyName);
 // ------------------------------------------------------------------------------------------------------------------
 // add new item
 // ------------------------------------------------------------------------------------------------------------------
-let addItemToScreen = (name) => {
+let addItemToScreen = (itemId, name) => {
     // give id to the new added item
-    const id = +app.items_wrapper.lastElementChild.firstElementChild.innerHTML + 1 || 0;
+    const listId = +app.items_wrapper.lastElementChild.firstElementChild.innerHTML + 1 || 0;
     const li_content = `
-    <span class="id-column">${id}</span>
+    <span class="id-column">${listId}</span>
     <span class="name-column">${sanitize(name)}</span>
+    <span class="fa fa-check" data-id=${itemId}></span>
     `
     const li = buildItem('LI', li_content);
     app.items_wrapper.appendChild(li);
@@ -156,7 +157,7 @@ let addNewItem = (e) => {
         name: newItemName
     })
         .then((resObj) => {
-            addItemToScreen(resObj.name);
+            addItemToScreen(resObj._id, resObj.name);
         })
         .catch((err) => {
             print(err);

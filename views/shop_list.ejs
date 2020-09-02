@@ -26,12 +26,12 @@
             <span class="id-column">ID</span>
             <span>Item</span>
         </div>
-        <ul class="table-body">
+        <ul class="table-body" id="table-body">
             <% for (let i = 1; i <= items.length; i++) { %>
                 <li>
                     <span class="id-column"><%= i %></span>
                     <span class="name-column"><%= items[i - 1].name %></span>
-                    <span class="fa fa-check" id="delete-item"></span>
+                    <span class="fa fa-check" data-id='<%= items[i - 1]._id %>'></span>
                 </li>
             <% } %>
         </ul>
@@ -74,5 +74,6 @@
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
 <script src="/js/add_item.js"></script>
+<script src="/js/delete_item.js"></script>
 </body>
 </html>
