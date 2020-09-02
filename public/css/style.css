@@ -181,8 +181,8 @@ header {
 }
 
 .id-column {
-    width: 72px;
     text-align: center;
+    width: 10%;
 }
 
 .table-body {
@@ -190,7 +190,7 @@ header {
 }
 
 .table-body li {
-    height: 72px;
+    height: auto;
     border: 1px solid #f0f4f9;
     border-top: none;
     line-height: 74px;
@@ -200,12 +200,35 @@ header {
 .table-body .id-column {
     font-size: 16px;
     color: #bac6d3;
+    width: 10%;
 }
 
 .table-body .name-column {
     font-size: 14px;
     font-weight: 500;
     color: #8491a5;
+    width: 80%;
+}
+
+span.fa-check {
+    color: green;
+    width: 10%;
+    line-height: 74px;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+span.fa-check:hover {
+    background-color: rgba(102, 204, 153, .2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 27px;
+}
+
+li:hover {
+    background-color: rgba(246,250,255, 1);
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 #new-item {
@@ -256,3 +279,4 @@ header {
 small#item-name-error {
     color: #B00020;
 }
+
