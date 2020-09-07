@@ -34,7 +34,6 @@ let deleteItem = (e) => {
             removeElementFromScreen(e.target.parentNode);
         })
         .catch((err) => {
-            // TODO: flash a message for 3 seconds and then delete it using setTimeout
             alert(err);
         })
 }

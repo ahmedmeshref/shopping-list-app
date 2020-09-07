@@ -3,7 +3,7 @@ const api = express.Router();
 const Item = require("./models/itemSchema");
 
 
-let send404 = (res) => {
+let send400 = (res) => {
     res.status(400).json({
         message: 'Bad Request'
     })
@@ -24,7 +24,7 @@ api.get('/items', async (req, res) => {
 
 api.post('/items', async (req, res) => {
     const name = req.body.name;
-    if (!name) send404(res);
+    if (!name) send400(res);
     const formattedName = name[0].toUpperCase() + req.body.name.slice(1).toLowerCase(),
         nameExist = await Item.findOne({ name: formattedName }).exec();
     if (nameExist === null){
@@ -38,23 +38,16 @@ api.post('/items', async (req, res) => {
             send500(res);
         }
     }
-    send404(res);
+    send400(res);
 });
 
 
 api.delete('/items', (req, res) => {
     const id = req.body.id;
-    if (!id) {
-        res.status(400).json({
-            message: 'Bad Request'
-        })
-    }
+    if (!id) send400(res);
     Item.findOneAndDelete({_id: id}, (err, item) => {
         if (err){
-            res.status(500).json({
-                success: true,
-                message: 'Sever Error. Please try again!'
-            })
+            send500(res);
         } else {
             res.json({
                 success: true,
