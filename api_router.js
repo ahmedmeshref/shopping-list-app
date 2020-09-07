@@ -15,6 +15,10 @@ let send500 = (res) => {
     })
 }
 
+let formatName = (name) => {
+    return name[0].toUpperCase() + name.slice(1).toLowerCase();
+}
+
 api.get('/items', async (req, res) => {
     const items = await Item.find();
     res.json({
@@ -25,7 +29,7 @@ api.get('/items', async (req, res) => {
 api.post('/items', async (req, res) => {
     const name = req.body.name;
     if (!name) send400(res);
-    const formattedName = name[0].toUpperCase() + req.body.name.slice(1).toLowerCase(),
+    const formattedName = formatName(name),
         nameExist = await Item.findOne({ name: formattedName }).exec();
     if (nameExist === null){
         try {

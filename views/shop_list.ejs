@@ -27,16 +27,16 @@
         </div>
         <ul class="table-body" id="table-body">
             <% for (let i = 1; i <= items.length; i++) { %>
-                <li>
+                <li data-id='<%= items[i - 1]._id %>'>
                     <span class="id-column"><%= i %></span>
                     <span class="name-column"><%= items[i - 1].name %></span>
-                    <span class="fa-check" data-id='<%= items[i - 1]._id %>'>&#10003;</span>
+                    <span class="fa-check">&#10003;</span>
                 </li>
             <% } %>
         </ul>
     </div>
 </div>
-<!-- Modal -->
+<!-- Add New Item Modal -->
 <div class="modal fade" id="addNewItem" tabindex="-1" role="dialog" aria-labelledby="addNewItemTitle"
      aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -72,7 +72,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous" defer></script>
-<script src="/js/add_item.js"></script>
-<script src="/js/delete_item.js"></script>
+<script src="/js/add_item.js" type="module"></script>
+<script src="/js/delete_update_item.js" type="module"></script>
 </body>
 </html>

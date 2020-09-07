@@ -12,10 +12,7 @@ let removeElementFromScreen = (element) => {
     }
 }
 
-let deleteItem = (e) => {
-    const target = e.target;
-    // verify the click target to be the check btn
-    if (!target.classList.contains("fa-check")) return;
+let deleteItem = (id) => {
     fetch("/api/items", {
         method: "DELETE",
         credentials: 'same-origin', // include, *same-origin, omit
@@ -23,7 +20,7 @@ let deleteItem = (e) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            id: target.dataset.id
+            id: id
         })
     })
         .then((response) => {
@@ -38,4 +35,17 @@ let deleteItem = (e) => {
         })
 }
 
-keys.items_wrapper.addEventListener("click", deleteItem);
+
+let updateItem = (id) => {
+    
+}
+
+let itemsClickHandler = (e) => {
+    const target = e.target;
+    console.log(target);
+    // if the click target is check btn -> delete item. Otherwise, update item
+    if (!target.classList.contains("fa-check")) deleteItem(target.parentNode.dataset.id);
+    else updateItem(target.parentNode.dataset.id);
+}
+
+keys.items_wrapper.addEventListener("click", itemsClickHandler);
