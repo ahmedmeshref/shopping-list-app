@@ -1,18 +1,28 @@
-const keys = {
+import {
+    print,
+    sanitize,
+    buildItem,
+    clickBtn,
+    getItems,
+    verifyItemName
+} from "./utils.js"
+
+
+const app = {
     items_wrapper: document.getElementById("table-body")
 }
 
 
 let removeElementFromScreen = (element) => {
     try {
-        keys.items_wrapper.removeChild(element);
-        console.log("Deleted Successfully!");
+        app.items_wrapper.removeChild(element);
+        print("Deleted Successfully!");
     } catch {
         alert("Error Happened!");
     }
 }
 
-let deleteItem = (id) => {
+let deleteItem = (target, id) => {
     fetch("/api/items", {
         method: "DELETE",
         credentials: 'same-origin', // include, *same-origin, omit
@@ -28,7 +38,7 @@ let deleteItem = (id) => {
             throw Error(response.statusText);
         })
         .then((resVal) => {
-            removeElementFromScreen(e.target.parentNode);
+            removeElementFromScreen(target.parentNode);
         })
         .catch((err) => {
             alert(err);
@@ -42,10 +52,9 @@ let updateItem = (id) => {
 
 let itemsClickHandler = (e) => {
     const target = e.target;
-    console.log(target);
     // if the click target is check btn -> delete item. Otherwise, update item
-    if (!target.classList.contains("fa-check")) deleteItem(target.parentNode.dataset.id);
+    if (target.classList.contains("fa-check")) deleteItem(target, target.parentNode.dataset.id);
     else updateItem(target.parentNode.dataset.id);
 }
 
-keys.items_wrapper.addEventListener("click", itemsClickHandler);
+app.items_wrapper.addEventListener("click", itemsClickHandler);
