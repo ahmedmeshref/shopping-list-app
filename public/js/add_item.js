@@ -13,16 +13,13 @@ const app = {
     item_name: document.getElementById("item-name"),
     items_wrapper: document.querySelector(".table-body"),
     close_model: document.getElementById("close-model"),
-    name_exist_error: document.getElementById("item-name-error"),
-    existing_items: []
 }
 
 // ------------------------------------------------------------------------------------------------------------------
 // Get existing items from db once "Add New Item" button is clicked
 // ------------------------------------------------------------------------------------------------------------------
 app.add_item_btn.addEventListener('click', () => {
-    console.log(getItems());
-    app.existing_items = getItems();
+    getItems();
 });
 
 
@@ -30,7 +27,7 @@ app.add_item_btn.addEventListener('click', () => {
 // Live verification of new item's name
 // ------------------------------------------------------------------------------------------------------------------
 app.item_name.addEventListener('keyup', _ => {
-    verifyItemName(app.existing_items, app.item_name.value);
+    verifyItemName(app.item_name.value);
 });
 
 
