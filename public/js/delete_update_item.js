@@ -47,7 +47,8 @@ let deleteItem = (target, id) => {
 
 
 let updateItem = (id) => {
-    
+    // open the model
+    $('#updateItem').modal('show');
 }
 
 let itemsClickHandler = (e) => {

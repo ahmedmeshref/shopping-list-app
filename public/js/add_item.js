@@ -12,7 +12,7 @@ const app = {
     add_item_form: document.getElementById("add-item-form"),
     item_name: document.getElementById("item-name"),
     items_wrapper: document.querySelector(".table-body"),
-    close_model: document.getElementById("close-model"),
+    close_model: document.getElementById("close-add-modal"),
 }
 
 // ------------------------------------------------------------------------------------------------------------------

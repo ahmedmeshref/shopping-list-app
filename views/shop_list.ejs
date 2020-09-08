@@ -55,8 +55,41 @@
                                required>
                         <small id="item-name-error" class="hidden">Item already exists.</small>
                     </div>
-                    <button type="submit" class="btn btn-primary" id="add-item">Add</button>
-                    <button type="button" id="close-model" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <div class="modal-btn-holder">
+                        <button type="submit" class="btn btn-primary" id="add-item">Add</button>
+                        <button type="button" id="close-add-modal" class="btn btn-secondary" data-dismiss="modal">
+                            Close
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Update item modal -->
+<div class="modal fade" id="updateItem" tabindex="-1" role="dialog" aria-labelledby="updateItemTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Update Item</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="update-item-form">
+                    <div class="form-group">
+                        <label for="new-name">Name</label>
+                        <input type="text" class="form-control" id="new-name" required>
+                        <small id="new-name-error" class="hidden">Item already exists.</small>
+                    </div>
+                    <div class="modal-btn-holder">
+                        <button type="submit" class="btn btn-primary" id="update-item">Update</button>
+                        <button type="button" id="close-update-modal" class="btn btn-secondary" data-dismiss="modal">
+                            Close
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
