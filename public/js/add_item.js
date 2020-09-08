@@ -13,6 +13,7 @@ const app = {
     item_name: document.getElementById("item-name"),
     items_wrapper: document.querySelector(".table-body"),
     close_model: document.getElementById("close-add-modal"),
+    name_error: document.getElementById("item-name-error"),
 }
 
 // ------------------------------------------------------------------------------------------------------------------
@@ -27,7 +28,7 @@ app.add_item_btn.addEventListener('click', () => {
 // Live verification of new item's name
 // ------------------------------------------------------------------------------------------------------------------
 app.item_name.addEventListener('keyup', _ => {
-    verifyItemName(app.item_name.value);
+    verifyItemName(app.item_name, app.name_error);
 });
 
 

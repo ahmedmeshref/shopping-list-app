@@ -9,9 +9,19 @@ import {
 
 
 const app = {
-    items_wrapper: document.getElementById("table-body")
+    items_wrapper: document.getElementById("table-body"),
+    updated_name: document.getElementById("updated-name"),
+    name_error: document.getElementById("updated-name-error")
 }
 
+
+// ------------------------------------------------------------------------------------------------------------------
+// Live verification of new item's name
+// ------------------------------------------------------------------------------------------------------------------
+app.updated_name.addEventListener('keyup', _ => {
+    console.log(app.updated_name.value)
+    verifyItemName(app.updated_name, app.updated_name);
+});
 
 let removeElementFromScreen = (element) => {
     try {
@@ -46,16 +56,19 @@ let deleteItem = (target, id) => {
 }
 
 
-let updateItem = (id) => {
-    // open the model
+let updateItem = (target, id) => {
+    // Show update item model with current name inserted
+    app.updated_name.value = target.parentNode.querySelector("#name").innerText;
     $('#updateItem').modal('show');
+    getItems();
 }
+
 
 let itemsClickHandler = (e) => {
     const target = e.target;
     // if the click target is check btn -> delete item. Otherwise, update item
     if (target.classList.contains("fa-check")) deleteItem(target, target.parentNode.dataset.id);
-    else updateItem(target.parentNode.dataset.id);
+    else updateItem(target, target.parentNode.dataset.id);
 }
 
 app.items_wrapper.addEventListener("click", itemsClickHandler);

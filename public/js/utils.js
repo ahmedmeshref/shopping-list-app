@@ -1,6 +1,5 @@
 const app = {
     item_name: document.getElementById("item-name"),
-    name_exist_error: document.getElementById("item-name-error"),
     existing_items: []
 };
 
@@ -75,19 +74,20 @@ let isUnique = (collection, newItem) => {
     return true;
 }
 
-export let verifyItemName = (item_name) => {
-    const newItemName = sanitize(item_name);
+export let verifyItemName = (item, error) => {
+    const newItemName = sanitize(item.value);
+    print(error);
     if (!newItemName) return;
     // format the new item name to match the format of the elements in db.
     const formattedItemName = formatName(newItemName);
     // check if new item's name is unique compared to existing items.
     if (isUnique(app.existing_items, formattedItemName)) {
         // if new item's name is unique, make the input field valid.
-        setInputValidity(app.item_name, "");
-        hideElement(app.name_exist_error);
+        setInputValidity(item, "");
+        hideElement(error);
     } else {
-        setInputValidity(app.item_name, "invalid");
+        setInputValidity(item, "invalid");
         // show error message, item already exists.
-        showElement(app.name_exist_error);
+        showElement(error);
     }
 }

@@ -29,7 +29,7 @@
             <% for (let i = 1; i <= items.length; i++) { %>
                 <li data-id='<%= items[i - 1]._id %>'>
                     <span class="id-column"><%= i %></span>
-                    <span class="name-column"><%= items[i - 1].name %></span>
+                    <span class="name-column" id="name"><%= items[i - 1].name %></span>
                     <span class="fa-check">&#10003;</span>
                 </li>
             <% } %>
@@ -53,7 +53,7 @@
                         <label for="item-name">Name</label>
                         <input type="text" class="form-control" id="item-name" placeholder="Enter item's name ..."
                                required>
-                        <small id="item-name-error" class="hidden">Item already exists.</small>
+                        <small id="new-name-error" class="hidden">Item already exists.</small>
                     </div>
                     <div class="modal-btn-holder">
                         <button type="submit" class="btn btn-primary" id="add-item">Add</button>
@@ -81,8 +81,8 @@
                 <form id="update-item-form">
                     <div class="form-group">
                         <label for="new-name">Name</label>
-                        <input type="text" class="form-control" id="new-name" required>
-                        <small id="new-name-error" class="hidden">Item already exists.</small>
+                        <input type="text" class="form-control" id="updated-name" required>
+                        <small id="updated-name-error" class="hidden">Item already exists.</small>
                     </div>
                     <div class="modal-btn-holder">
                         <button type="submit" class="btn btn-primary" id="update-item">Update</button>
