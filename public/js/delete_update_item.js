@@ -20,7 +20,7 @@ const app = {
 // ------------------------------------------------------------------------------------------------------------------
 app.updated_name.addEventListener('keyup', _ => {
     console.log(app.updated_name.value)
-    verifyItemName(app.updated_name, app.updated_name);
+    verifyItemName(app.updated_name, app.name_error);
 });
 
 let removeElementFromScreen = (element) => {
@@ -66,6 +66,7 @@ let updateItem = (target, id) => {
 
 let itemsClickHandler = (e) => {
     const target = e.target;
+    console.log(target);
     // if the click target is check btn -> delete item. Otherwise, update item
     if (target.classList.contains("fa-check")) deleteItem(target, target.parentNode.dataset.id);
     else updateItem(target, target.parentNode.dataset.id);

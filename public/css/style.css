@@ -276,7 +276,7 @@ li:hover {
     display: none;
 }
 
-small#new-name-error small#updated-name-error {
+small#add-name-error, small#updated-name-error{
     color: #B00020;
 }
 

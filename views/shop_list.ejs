@@ -27,7 +27,7 @@
         </div>
         <ul class="table-body" id="table-body">
             <% for (let i = 1; i <= items.length; i++) { %>
-                <li data-id='<%= items[i - 1]._id %>'>
+                <li data-id='<%= items[i - 1]._id %>' class="list-item">
                     <span class="id-column"><%= i %></span>
                     <span class="name-column" id="name"><%= items[i - 1].name %></span>
                     <span class="fa-check">&#10003;</span>
@@ -53,7 +53,7 @@
                         <label for="item-name">Name</label>
                         <input type="text" class="form-control" id="item-name" placeholder="Enter item's name ..."
                                required>
-                        <small id="new-name-error" class="hidden">Item already exists.</small>
+                        <small id="add-name-error" class="hidden">Item already exists.</small>
                     </div>
                     <div class="modal-btn-holder">
                         <button type="submit" class="btn btn-primary" id="add-item">Add</button>

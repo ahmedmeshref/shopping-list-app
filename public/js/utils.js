@@ -76,7 +76,6 @@ let isUnique = (collection, newItem) => {
 
 export let verifyItemName = (item, error) => {
     const newItemName = sanitize(item.value);
-    print(error);
     if (!newItemName) return;
     // format the new item name to match the format of the elements in db.
     const formattedItemName = formatName(newItemName);

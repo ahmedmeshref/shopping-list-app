@@ -13,7 +13,7 @@ const app = {
     item_name: document.getElementById("item-name"),
     items_wrapper: document.querySelector(".table-body"),
     close_model: document.getElementById("close-add-modal"),
-    name_error: document.getElementById("item-name-error"),
+    name_error: document.getElementById("add-name-error"),
 }
 
 // ------------------------------------------------------------------------------------------------------------------
@@ -41,9 +41,10 @@ let addItemToScreen = (itemId, name) => {
     const li_content = `
     <span class="id-column">${listId}</span>
     <span class="name-column">${sanitize(name)}</span>
-    <span class="fa fa-check" data-id=${itemId}>&#10003;</span>
+    <span class="fa-check">&#10003;</span>
     `
-    const li = buildItem('LI', li_content);
+    const li = buildItem('LI', li_content, "list-item");
+    li.setAttribute("data-id", itemId)
     app.items_wrapper.appendChild(li);
 }
 
