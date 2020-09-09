@@ -57,7 +57,26 @@ let deleteItem = (target, id) => {
 
 
 let updateItem = (newName, id) => {
-    fetch("")
+    fetch("/api/items", {
+        method: "PATCH",
+        credentials: 'same-origin', // include, *same-origin, omit
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            name: sanitize(newName)
+        })
+    })
+        .then((response) => {
+            if (response.ok) return response.json();
+            throw Error(response.statusText);
+        })
+        .then((resObj) => {
+            // TODO: Close the modal and update the name of the given element with its id and target element
+        })
+        .catch((err) => {
+            print(err);
+        })
 }
 
 let updateItemHandler = (targetEle, id) => {
