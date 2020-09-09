@@ -56,20 +56,30 @@ let deleteItem = (target, id) => {
 }
 
 
-let updateItem = (target, id) => {
+let updateItem = (newName, id) => {
+    fetch("")
+}
+
+let updateItemHandler = (targetEle, id) => {
     // Show update item model with current name inserted
-    app.updated_name.value = target.parentNode.querySelector("#name").innerText;
+    app.updated_name.value = targetEle.parentNode.querySelector("#name").innerText;
+    // show modal with the current name
     $('#updateItem').modal('show');
+    // fetch all elements for live verification
     getItems();
+    // check for the validation of the new name
+    if (!app.updated_name.checkValidity()) {
+        return;
+    }
+    updateItem(app.updated_name.value, id);
 }
 
 
 let itemsClickHandler = (e) => {
     const target = e.target;
-    console.log(target);
     // if the click target is check btn -> delete item. Otherwise, update item
     if (target.classList.contains("fa-check")) deleteItem(target, target.parentNode.dataset.id);
-    else updateItem(target, target.parentNode.dataset.id);
+    else updateItemHandler(target, target.parentNode.dataset.id);
 }
 
 app.items_wrapper.addEventListener("click", itemsClickHandler);

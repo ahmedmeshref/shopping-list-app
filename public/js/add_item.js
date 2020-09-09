@@ -40,7 +40,7 @@ let addItemToScreen = (itemId, name) => {
     const listId = +app.items_wrapper.childElementCount + 1;
     const li_content = `
     <span class="id-column">${listId}</span>
-    <span class="name-column">${sanitize(name)}</span>
+    <span class="name-column" id="name">${sanitize(name)}</span>
     <span class="fa-check">&#10003;</span>
     `
     const li = buildItem('LI', li_content, "list-item");
