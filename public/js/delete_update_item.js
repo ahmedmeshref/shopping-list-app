@@ -11,7 +11,8 @@ import {
 const app = {
     items_wrapper: document.getElementById("table-body"),
     updated_name: document.getElementById("updated-name"),
-    name_error: document.getElementById("updated-name-error")
+    name_error: document.getElementById("updated-name-error"),
+    update_item_btn: document.getElementById("update-item")
 }
 
 
@@ -57,6 +58,11 @@ let deleteItem = (target, id) => {
 
 
 let updateItem = (newName, id) => {
+    // check for the validation of the new name
+    if (!app.updated_name.checkValidity()) {
+        return;
+    }
+
     fetch("/api/items", {
         method: "PATCH",
         credentials: 'same-origin', // include, *same-origin, omit
@@ -64,7 +70,8 @@ let updateItem = (newName, id) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            name: sanitize(newName)
+            id: id,
+            new_name: sanitize(newName)
         })
     })
         .then((response) => {
@@ -72,6 +79,7 @@ let updateItem = (newName, id) => {
             throw Error(response.statusText);
         })
         .then((resObj) => {
+            console.log(resObj);
             // TODO: Close the modal and update the name of the given element with its id and target element
         })
         .catch((err) => {
@@ -79,21 +87,21 @@ let updateItem = (newName, id) => {
         })
 }
 
-let updateItemHandler = (targetEle, id) => {
+let updateItemHandler = (targetEle) => {
     // Show update item model with current name inserted
     app.updated_name.value = targetEle.parentNode.querySelector("#name").innerText;
     // show modal with the current name
     $('#updateItem').modal('show');
     // fetch all elements for live verification
     getItems();
-    // check for the validation of the new name
-    if (!app.updated_name.checkValidity()) {
-        return;
-    }
-    updateItem(app.updated_name.value, id);
 }
 
+// I have no idea how to get the id of the clicked item.
+app.update_item_btn.addEventListener('click', updateItem(app.updated_name.value, id));
 
+// ------------------------------------------------------------------------------------------------------------------
+// Detect Update or Delete item
+// ------------------------------------------------------------------------------------------------------------------
 let itemsClickHandler = (e) => {
     const target = e.target;
     // if the click target is check btn -> delete item. Otherwise, update item

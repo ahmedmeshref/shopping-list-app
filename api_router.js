@@ -3,15 +3,17 @@ const api = express.Router();
 const Item = require("./models/itemSchema");
 
 
-let send400 = (res) => {
+let send400 = (res, err = 'Required data is missing!') => {
     res.status(400).json({
-        message: 'Bad Request'
+        message: 'Bad Request',
+        err: err.message
     })
 }
 
-let send500 = (res) => {
+let send500 = (res, err) => {
     res.status(500).json({
-        message: err
+        message: "Internal Server Error!",
+        err: err.message
     })
 }
 
@@ -30,8 +32,8 @@ api.post('/items', async (req, res) => {
     const name = req.body.name;
     if (!name) send400(res);
     const formattedName = formatName(name),
-        nameExist = await Item.findOne({ name: formattedName }).exec();
-    if (nameExist === null){
+        nameExist = await Item.findOne({name: formattedName}).exec();
+    if (nameExist === null) {
         try {
             const new_item = new Item({
                 name: formattedName
@@ -50,14 +52,27 @@ api.delete('/items', (req, res) => {
     const id = req.body.id;
     if (!id) send400(res);
     Item.findOneAndDelete({_id: id}, (err, item) => {
-        if (err){
-            send500(res);
+        if (err) {
+            send400(res, err);
         } else {
             res.json({
                 success: true,
                 item: item
             })
         }
+    })
+})
+
+
+api.patch('/items', (req, res) => {
+    const id = req.body.id,
+        new_name = req.body.new_name;
+
+    Item.findOneAndUpdate({_id: id}, {name: new_name}, {new: true}, (err, doc) => {
+        if (err) {
+            send500(req, err);
+        }
+        res.json(doc);
     })
 })
 
